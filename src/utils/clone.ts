@@ -34,5 +34,6 @@ export const clone = async (url: string, projectName: string, options: string[])
         console.log(`${chalk.yellow('pnpm')} run dev`)
     } catch (error) {
         console.log(chalk.red('Code downloding failed'))
+        console.error(error)
     }
 }

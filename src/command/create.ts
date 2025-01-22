@@ -70,7 +70,7 @@ export const templates: Map<string, TemplateInfo> = new Map([
 
 export async function create(projectName?: string) {
 
-    // 初始化模版列表
+    // 1. 初始化模版列表
 
     const templateList = Array.from(templates).map((item: [string, TemplateInfo]) => {
 
@@ -88,7 +88,7 @@ export async function create(projectName?: string) {
     }
 
     const filePath = path.resolve(process.cwd(), projectName)
-    // 判断文件夹是否存在
+    // 2. 判断文件夹是否存在
     if (fs.existsSync(filePath)) {
         const run = await isOverhidden(filePath)
 
@@ -99,9 +99,10 @@ export async function create(projectName?: string) {
         }
     }
 
-    // 检查版本更新
+    // 3. 检查版本更新
     await checkVersion(name, version)
 
+    // 4. 选择模板
     const templateName = await select({
         message: '请选择模板',
         choices: templateList
@@ -109,6 +110,7 @@ export async function create(projectName?: string) {
 
     const info = templates.get(templateName)
 
+    // 5. 克隆模板代码
     if (info) {
         clone(info.downloadUrl, projectName, ['-b', info.branch])
     }

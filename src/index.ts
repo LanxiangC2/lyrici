@@ -1,6 +1,7 @@
 import { Command } from 'commander'
 import { version } from '../package.json'
 import { create } from './command/create'
+import { update } from './command/update'
 
 
 const program = new Command('lyrici')
@@ -14,9 +15,14 @@ program.command('create')
         if (dirname) {
         } else {
             console.log('create', dirname)
-            console.log('project name is required')
             return
         }
+    })
+
+program.command('update')
+    .description('update cli version')
+    .action(async () => {
+        await update()
     })
 
 program.parse();
