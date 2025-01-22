@@ -7,6 +7,10 @@ export interface TemplateInfo {
 
 import { input, select } from '@inquirer/prompts'
 import { clone } from '../utils/clone'
+import {version, name} from '../../package.json'
+import axios, { AxiosResponse } from 'axios'
+import chalk from 'chalk'
+import { gt } from 'lodash'
 
 import path from 'path'
 import fs from 'fs-extra'
@@ -20,6 +24,32 @@ export function isOverhidden(fileName: string) {
             {   name: '否', value: false }
         ]
     })
+}
+
+export const getNpmInfo = async (npmName: string) => {
+    const npmUrl = `https://registry.npmjs.org/${name}`
+    let res = {};
+    try {
+        res = await axios.get(npmUrl)
+    } catch (error) {
+        console.log(chalk.red(`获取最新版本号失败`))
+    }
+    return res;
+}
+export const getNpmLastestVersion = async (name: string) => {
+    
+    const { data } = await getNpmInfo(name) as AxiosResponse;
+    return data['dist-tags'].latest;
+
+}
+export const checkVersion = async (name: string, version: string) => {
+    const latestVersion = await getNpmLastestVersion(name);
+    const needUpdate = gt(latestVersion, version)
+    if (needUpdate) {
+        console.log(chalk.blackBright(`当前版本: ${version}，最新版本：${latestVersion}`))
+        console.log(`可使用 ${chalk.yellow('npm install lyrici@latest -g')} 或者 ${chalk.yellow('lyrici update')} 更新到最新版本`)
+    }
+    return needUpdate;
 }
 
 export const templates: Map<string, TemplateInfo> = new Map([
@@ -68,6 +98,9 @@ export async function create(projectName?: string) {
             return // 不覆盖直接结束
         }
     }
+
+    // 检查版本更新
+    await checkVersion(name, version)
 
     const templateName = await select({
         message: '请选择模板',
