@@ -1,6 +1,6 @@
 {
   "name": "lyrici",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "index.js",
   "scripts": {
     "build": "rollup -c rollup.config.js --bundleConfigAsCjs"
