@@ -1,14 +1,19 @@
 {
-  "name": "my-cli",
-  "version": "1.0.0",
+  "name": "lyrici",
+  "version": "0.0.1",
+
   "main": "index.js",
   "scripts": {
     "build": "rollup -c rollup.config.js --bundleConfigAsCjs"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["Vite", "Vue3", "TypeScript", "ElementPlus"],
+  "author": "lyric",
   "license": "ISC",
-  "description": "",
+  "bin": {
+    "lyrici": "bin/index.js"
+  },
+  "files": ["dist", "bin", "README.md"],
+  "description": "lyrici 脚手架工具",
   "devDependencies": {
     "@inquirer/prompts": "^7.2.3",
     "@rollup/plugin-commonjs": "^28.0.2",
