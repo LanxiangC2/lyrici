@@ -29,6 +29,6 @@ export const clone = async (url: string, projectName: string, options: string[])
         console.log(chalk.blackBright('========== Welcome lyrici ========'))
         console.log(chalk.blackBright('=================================='))
     } catch (error) {
-         
+        console.log(chalk.red('Code downloding failed'))
     }
 }
