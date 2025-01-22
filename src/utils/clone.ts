@@ -28,6 +28,10 @@ export const clone = async (url: string, projectName: string, options: string[])
         console.log(chalk.blackBright('=================================='))
         console.log(chalk.blackBright('========== Welcome lyrici ========'))
         console.log(chalk.blackBright('=================================='))
+
+        console.log(`cd ${chalk.blueBright(projectName)}`)
+        console.log(`${chalk.yellow('pnpm')} install`)
+        console.log(`${chalk.yellow('pnpm')} run dev`)
     } catch (error) {
         console.log(chalk.red('Code downloding failed'))
     }
