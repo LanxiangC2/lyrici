@@ -1,18 +1,26 @@
 {
   "name": "lyrici",
-  "version": "0.0.2",
-
+  "version": "0.0.3",
   "main": "index.js",
   "scripts": {
     "build": "rollup -c rollup.config.js --bundleConfigAsCjs"
   },
-  "keywords": ["Vite", "Vue3", "TypeScript", "ElementPlus"],
+  "keywords": [
+    "Vite",
+    "Vue3",
+    "TypeScript",
+    "ElementPlus"
+  ],
   "author": "lyric",
   "license": "ISC",
   "bin": {
     "lyrici": "bin/index.js"
   },
-  "files": ["dist", "bin", "README.md"],
+  "files": [
+    "dist",
+    "bin",
+    "README.md"
+  ],
   "description": "lyrici 脚手架工具",
   "devDependencies": {
     "@inquirer/prompts": "^7.2.3",
