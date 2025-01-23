@@ -59,10 +59,10 @@ export const templates: Map<string, TemplateInfo> = new Map([
         description: '这是一个基于Vite vue3 TypeScript Pinia Element-UI 的管理后台项目模板',
         branch: 'main'
     }],
-    ['Vite-Vue3-TypeScript-template-2', {
-        name: 'Vite-Vue3-TypeScript-template',
-        downloadUrl: 'https://github.com/LanxiangC2/admin-pro.git',
-        description: '这是一个基于Vite vue3 TypeScript Pinia Element-UI 的管理后台项目模板2',
+    ['Vite-Vue3-TypeScript-vant-h5', {
+        name: 'Vite-Vue3-TypeScript-vant-h5',
+        downloadUrl: 'https://github.com/LanxiangC2/h5-template.git',
+        description: '这是一个基于Vite vue3 TypeScript Pinia Vant 的H5项目模板',
         branch: 'main'
     }]
 
